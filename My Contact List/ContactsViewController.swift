@@ -46,9 +46,24 @@ class ContactsViewController: UIViewController {
     }
     
     
-    func keyboardDidShow(notification: NSNotification) {
+    @objc func keyboardDidShow(notification: NSNotification) {
         let userInfo: NSDictionary = notification.userInfo! as NSDictionary
+        let keyboardInfo = userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue
+        let keyboardSize = keyboardInfo.cgRectValue.size
         
+        var contentInset = self.scrollView.contentInset
+        contentInset.bottom = keyboardSize.height
+        
+        self.scrollView.contentInset = contentInset
+        self.scrollView.scrollIndicatorInsets = contentInset
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        var contentInset = self.scrollView.contentInset
+        contentInset.bottom = 0
+        
+        self.scrollView.contentInset = contentInset
+        self.scrollView.scrollIndicatorInsets = contentInset
     }
     
     
