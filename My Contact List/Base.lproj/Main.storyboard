@@ -24,6 +24,9 @@
                                     <segment title="View"/>
                                     <segment title="Edit"/>
                                 </segments>
+                                <connections>
+                                    <action selector="changeEditMode:" destination="9pv-A4-QxB" eventType="valueChanged" id="jvs-0n-xYz"/>
+                                </connections>
                             </segmentedControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="bkH-Ax-zAH">
                                 <rect key="frame" x="0.0" y="122" width="375" height="496"/>
@@ -179,7 +182,6 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="6bD-Fh-mUP" secondAttribute="trailing" constant="20" id="7bB-jP-vxz"/>
                                     <constraint firstItem="6bD-Fh-mUP" firstAttribute="top" secondItem="bkH-Ax-zAH" secondAttribute="top" id="EJ9-ce-N9a"/>
                                     <constraint firstAttribute="trailing" secondItem="6bD-Fh-mUP" secondAttribute="trailing" id="T7S-xv-cM5"/>
                                     <constraint firstItem="6bD-Fh-mUP" firstAttribute="width" secondItem="bkH-Ax-zAH" secondAttribute="width" id="pLo-al-kX3"/>
@@ -190,7 +192,6 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="bax-fa-liU" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="Oo1-mf-EPH"/>
                             <constraint firstItem="bax-fa-liU" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="15" id="RXi-n0-bwE"/>
                             <constraint firstItem="bax-fa-liU" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="Y9L-wP-SO4"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="bkH-Ax-zAH" secondAttribute="bottom" id="bpV-U5-aGF"/>
@@ -202,12 +203,23 @@
                     </view>
                     <navigationItem key="navigationItem" title="Contact" id="mK4-OH-zfK"/>
                     <connections>
+                        <outlet property="btnChange" destination="Qd4-Jb-FK1" id="7ZG-3p-zgc"/>
+                        <outlet property="lblBirthDate" destination="yWW-i5-tgV" id="t1I-bT-aL5"/>
                         <outlet property="scrollView" destination="bkH-Ax-zAH" id="nI5-Q0-UaW"/>
+                        <outlet property="sgmtEditMode" destination="bax-fa-liU" id="2Xs-8j-jjm"/>
+                        <outlet property="txtAddress" destination="ZEs-Dy-sNC" id="wAI-fC-cox"/>
+                        <outlet property="txtCell" destination="Aug-cv-M1b" id="88o-oC-eRR"/>
+                        <outlet property="txtCity" destination="82o-FT-yOf" id="aVv-yA-p4o"/>
+                        <outlet property="txtEmail" destination="tVi-Ew-F7f" id="t68-gc-6Y2"/>
+                        <outlet property="txtHome" destination="DVT-mf-Rh2" id="5cU-DY-08q"/>
+                        <outlet property="txtName" destination="Gvd-mP-Xlp" id="lOm-Yw-IYr"/>
+                        <outlet property="txtState" destination="Jnd-8x-Z0B" id="Y7W-0m-qS9"/>
+                        <outlet property="txtZipCode" destination="mXu-az-8Zk" id="bzo-nd-OZS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="606" y="-322"/>
+            <point key="canvasLocation" x="588" y="-781"/>
         </scene>
         <!--Birthdate-->
         <scene sceneID="WfG-ZD-yFU">
@@ -231,7 +243,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnh-cy-SCr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1678" y="-504"/>
+            <point key="canvasLocation" x="1426" y="-781"/>
         </scene>
         <!--Settings-->
         <scene sceneID="wg7-f3-ORb">
@@ -297,7 +309,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3En-BU-kFN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1313" y="170"/>
+            <point key="canvasLocation" x="588" y="0.0"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -335,7 +347,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w2E-hO-uWZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-284" y="-321"/>
+            <point key="canvasLocation" x="-284" y="-781"/>
         </scene>
     </scenes>
     <resources>

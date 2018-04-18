@@ -8,7 +8,18 @@
 import UIKit
 
 class ContactsViewController: UIViewController {
-
+    @IBOutlet weak var sgmtEditMode: UISegmentedControl!
+    @IBOutlet weak var txtName: UITextField!
+    @IBOutlet weak var txtAddress: UITextField!
+    @IBOutlet weak var txtCity: UITextField!
+    @IBOutlet weak var txtState: UITextField!
+    @IBOutlet weak var txtZipCode: UITextField!
+    @IBOutlet weak var txtEmail: UITextField!
+    @IBOutlet weak var txtHome: UITextField!
+    @IBOutlet weak var txtCell: UITextField!
+    @IBOutlet weak var lblBirthDate: UILabel!
+    @IBOutlet weak var btnChange: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -65,6 +76,25 @@ class ContactsViewController: UIViewController {
         self.scrollView.contentInset = contentInset
         self.scrollView.scrollIndicatorInsets = contentInset
     }
+    
+    @IBAction func changeEditMode(_ sender: Any) {
+        let textFields: [UITextField] = [txtName,txtAddress,txtCity,txtState,txtZipCode,txtEmail,txtHome,txtCell]
+        if sgmtEditMode.selectedSegmentIndex == 0 {
+            for textField in textFields{
+                textField.isEnabled = false
+                textField.borderStyle = UITextBorderStyle.none
+            }
+            btnChange.isHidden = true
+        }
+        else if sgmtEditMode.selectedSegmentIndex == 1 {
+            for textField in textFields{
+                textField.isEnabled = true
+                textField.borderStyle = UITextBorderStyle.roundedRect
+            }
+            btnChange.isHidden = false
+        }
+    }
+    
     
     
     /*
