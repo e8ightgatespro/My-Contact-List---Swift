@@ -21,6 +21,22 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         pckSortField.delegate = self
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let settings = UserDefaults.standard
+        swAscending.setOn(settings.bool(forKey: "sortDirectionAscending"), animated: true)
+        let sortField = settings.string(forKey: "sortField")
+        var i = 0
+        for field in sortOrderItems {
+            if field == sortField {
+                pckSortField.selectRow(i, inComponent: 0, animated: false)
+            }
+            i += 1
+        }
+        pckSortField.reloadComponent(0)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -28,6 +44,9 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     @IBAction func sortDirectionChanged(_ sender: Any) {
+        let settings = UserDefaults.standard
+        settings.set(swAscending.isOn, forKey: "sortDirectionAscending")
+        settings.synchronize()
         
     }
     
@@ -44,7 +63,10 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print("Chosen Item: \(sortOrderItems[row])")
+        let sortField = sortOrderItems[row]
+        let settings = UserDefaults.standard
+        settings.set(sortField, forKey: "sortField")
+        settings.synchronize()
     }
     
     /*
