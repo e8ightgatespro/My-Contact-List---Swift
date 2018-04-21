@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E156B60208BD5E8007D2770 /* MyContactListModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E156B5E208BD5E8007D2770 /* MyContactListModel.xcdatamodeld */; };
+		4E156B62208BDC9C007D2770 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E156B61208BDC9C007D2770 /* DateViewController.swift */; };
 		4E423AA120881B1200AF72F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E423AA020881B1200AF72F9 /* Constants.swift */; };
 		4EF738222085085300D52B24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF738212085085300D52B24 /* AppDelegate.swift */; };
 		4EF738292085085300D52B24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EF738272085085300D52B24 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		4E156B5F208BD5E8007D2770 /* MyContactListModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyContactListModel.xcdatamodel; sourceTree = "<group>"; };
+		4E156B61208BDC9C007D2770 /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 		4E423AA020881B1200AF72F9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4EF7381E2085085300D52B24 /* My Contact List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Contact List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EF738212085085300D52B24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				4E423AA020881B1200AF72F9 /* Constants.swift */,
 				4EF7383920850ABC00D52B24 /* MapViewController.swift */,
 				4E156B5E208BD5E8007D2770 /* MyContactListModel.xcdatamodeld */,
+				4E156B61208BDC9C007D2770 /* DateViewController.swift */,
 			);
 			path = "My Contact List";
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 			files = (
 				4E423AA120881B1200AF72F9 /* Constants.swift in Sources */,
 				4EF7383A20850ABC00D52B24 /* MapViewController.swift in Sources */,
+				4E156B62208BDC9C007D2770 /* DateViewController.swift in Sources */,
 				4E156B60208BD5E8007D2770 /* MyContactListModel.xcdatamodeld in Sources */,
 				4EF7383620850AA400D52B24 /* ContactsViewController.swift in Sources */,
 				4EF738222085085300D52B24 /* AppDelegate.swift in Sources */,

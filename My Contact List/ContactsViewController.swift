@@ -8,7 +8,17 @@
 import UIKit
 import CoreData
 
-class ContactsViewController: UIViewController, UITextFieldDelegate {
+class ContactsViewController: UIViewController, UITextFieldDelegate, DateControllerDelegate {
+    func dateChanged(date: Date) {
+        if currentContact != nil {
+            currentContact?.birthday? = date
+            appDelegate.saveContext()
+            let formatter = DateFormatter()
+            formatter.dateStyle = .short
+            lblBirthDate.text = formatter.string(from: date)
+        }
+    }
+    
     
     var currentContact: Contact?
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -35,6 +45,13 @@ class ContactsViewController: UIViewController, UITextFieldDelegate {
         
         for textfield in textFields {
             textfield.addTarget(self, action: #selector(UITextFieldDelegate.textFieldShouldEndEditing(_:)), for: UIControlEvents.editingDidEnd)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "segueContactDate") {
+            let dateController = segue.destination as! DateViewController
+            dateController.delegate = self
         }
     }
     

@@ -224,7 +224,7 @@
         <!--Birthdate-->
         <scene sceneID="WfG-ZD-yFU">
             <objects>
-                <viewController title="Birthdate" id="ODC-Ee-cMj" sceneMemberID="viewController">
+                <viewController title="Birthdate" id="ODC-Ee-cMj" customClass="DateViewController" customModule="My_Contact_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MmG-DK-d2m">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -240,6 +240,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="ADG-LD-Of4"/>
                     </view>
+                    <connections>
+                        <outlet property="dtpDate" destination="Qy2-3P-3Fr" id="Q9H-aU-aUj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnh-cy-SCr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
