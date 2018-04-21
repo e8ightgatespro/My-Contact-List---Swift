@@ -9,16 +9,6 @@ import UIKit
 import CoreData
 
 class ContactsViewController: UIViewController, UITextFieldDelegate, DateControllerDelegate {
-    func dateChanged(date: Date) {
-        if currentContact != nil {
-            currentContact?.birthday? = date
-            appDelegate.saveContext()
-            let formatter = DateFormatter()
-            formatter.dateStyle = .short
-            lblBirthDate.text = formatter.string(from: date)
-        }
-    }
-    
     
     var currentContact: Contact?
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -55,7 +45,17 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
         }
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) -> Bool {
+    func dateChanged(date: Date) {
+        if currentContact != nil {
+            currentContact?.birthday = date as NSDate?
+            appDelegate.saveContext()
+            let formatter = DateFormatter()
+            formatter.dateStyle = .short
+            lblBirthDate.text = formatter.string(from: date)
+        }
+    }
+    
+    private func textFieldDidEndEditing(_ textField: UITextField) -> Bool {
         currentContact?.contactName = txtName.text
         currentContact?.streetAddress = txtAddress.text
         currentContact?.city = txtCity.text
