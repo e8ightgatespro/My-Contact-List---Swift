@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import CoreData
 
-class ContactsViewController: UIViewController {
+class ContactsViewController: UIViewController, UITextFieldDelegate {
+    
+    var currentContact: Contact?
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     @IBOutlet weak var sgmtEditMode: UISegmentedControl!
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtAddress: UITextField!
@@ -22,8 +27,28 @@ class ContactsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        
+        changeEditMode(self)
+        
+        let textFields: [UITextField] = [txtName, txtAddress, txtCity, txtState, txtZipCode, txtHome, txtCell, txtEmail]
+        
+        for textfield in textFields {
+            textfield.addTarget(self, action: #selector(UITextFieldDelegate.textFieldShouldEndEditing(_:)), for: UIControlEvents.editingDidEnd)
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) -> Bool {
+        currentContact?.contactName = txtName.text
+        currentContact?.streetAddress = txtAddress.text
+        currentContact?.city = txtCity.text
+        currentContact?.state = txtState.text
+        currentContact?.zipCode = txtZipCode.text
+        currentContact?.cellNumber = txtCell.text
+        currentContact?.phoneNumber = txtHome.text
+        currentContact?.email = txtEmail.text
+        return true
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,6 +110,7 @@ class ContactsViewController: UIViewController {
                 textField.borderStyle = UITextBorderStyle.none
             }
             btnChange.isHidden = true
+            navigationItem.rightBarButtonItem = nil
         }
         else if sgmtEditMode.selectedSegmentIndex == 1 {
             for textField in textFields{
@@ -92,7 +118,19 @@ class ContactsViewController: UIViewController {
                 textField.borderStyle = UITextBorderStyle.roundedRect
             }
             btnChange.isHidden = false
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(self.saveContact))
         }
+    }
+    
+    @objc func saveContact() {
+        if currentContact == nil {
+            let context = appDelegate.persistentContainer.viewContext
+            currentContact = Contact(context: context)
+        }
+        
+        appDelegate.saveContext()
+        sgmtEditMode.selectedSegmentIndex = 0
+        changeEditMode(self)
     }
     
     
