@@ -38,6 +38,20 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
         }
     }
     
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        currentContact?.contactName = txtName.text
+        currentContact?.streetAddress = txtAddress.text
+        currentContact?.city = txtCity.text
+        currentContact?.state = txtState.text
+        currentContact?.zipCode = txtZipCode.text
+        currentContact?.cellNumber = txtCell.text
+        currentContact?.phoneNumber = txtHome.text
+        currentContact?.email = txtEmail.text
+        return true
+        
+    }
+
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "segueContactDate") {
             let dateController = segue.destination as! DateViewController
@@ -55,19 +69,7 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
         }
     }
     
-    private func textFieldDidEndEditing(_ textField: UITextField) -> Bool {
-        currentContact?.contactName = txtName.text
-        currentContact?.streetAddress = txtAddress.text
-        currentContact?.city = txtCity.text
-        currentContact?.state = txtState.text
-        currentContact?.zipCode = txtZipCode.text
-        currentContact?.cellNumber = txtCell.text
-        currentContact?.phoneNumber = txtHome.text
-        currentContact?.email = txtEmail.text
-        return true
-
-    }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

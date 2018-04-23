@@ -13,6 +13,8 @@ protocol DateControllerDelegate: class {
 }
 
 class DateViewController: UIViewController {
+    
+    @IBOutlet weak var dtpDate: UIDatePicker!
     weak var delegate: DateControllerDelegate?
 
     override func viewDidLoad() {
@@ -35,7 +37,7 @@ class DateViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBOutlet weak var dtpDate: UIDatePicker!
+    
     
     /*
     // MARK: - Navigation
