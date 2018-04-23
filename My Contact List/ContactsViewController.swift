@@ -47,7 +47,7 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
     
     func dateChanged(date: Date) {
         if currentContact != nil {
-            currentContact?.birthday = date as NSDate?
+            currentContact?.birthday = date
             appDelegate.saveContext()
             let formatter = DateFormatter()
             formatter.dateStyle = .short
