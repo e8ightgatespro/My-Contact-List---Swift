@@ -17,12 +17,17 @@ class ContactsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadDataFromDatabase()
+        //loadDataFromDatabase()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadDataFromDatabase()
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,6 +63,7 @@ class ContactsTableViewController: UITableViewController {
         let contact = contacts[indexPath.row] as? Contact
         cell.textLabel?.text = contact?.contactName
         cell.detailTextLabel?.text = contact?.city
+        cell.accessoryType = UITableViewCellAccessoryType.detailDisclosureButton
         return cell
     }
  
@@ -70,17 +76,26 @@ class ContactsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            let contact = contacts[indexPath.row] as? Contact
+            let context = appDelegate.persistentContainer.viewContext
+            context.delete(contact!)
+            do {
+                try context.save()
+            } catch {
+                fatalError("Error saving context: \(error)")
+            }
+            loadDataFromDatabase()
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
@@ -97,14 +112,19 @@ class ContactsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "EditContact" {
+            let contactController = segue.destination as? ContactsViewController
+            let selectedRow = self.tableView.indexPath(for: sender as! UITableViewCell)?.row
+            let selectedContact = contacts[selectedRow!] as? Contact
+            contactController?.currentContact = selectedContact!
+            
+        }
     }
-    */
+    
 
 }

@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bax-fa-liU">
-                                <rect key="frame" x="143" y="35" width="89" height="29"/>
+                                <rect key="frame" x="143" y="79" width="89" height="29"/>
                                 <segments>
                                     <segment title="View"/>
                                     <segment title="Edit"/>
@@ -29,7 +29,7 @@
                                 </connections>
                             </segmentedControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="bkH-Ax-zAH">
-                                <rect key="frame" x="0.0" y="78" width="375" height="589"/>
+                                <rect key="frame" x="0.0" y="122" width="375" height="496"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="6bD-Fh-mUP">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="291.5"/>
@@ -370,14 +370,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DVT-g4-DTJ">
-                                            <rect key="frame" x="16" y="5" width="33" height="20"/>
+                                            <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="54J-B9-odg">
-                                            <rect key="frame" x="16" y="25" width="44" height="15"/>
+                                            <rect key="frame" x="16" y="25.5" width="44" height="14.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -385,6 +385,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="9pv-A4-QxB" kind="show" identifier="EditContact" trigger="accessoryAction" id="tOD-t4-Vk8"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -392,7 +395,13 @@
                             <outlet property="delegate" destination="JZY-lQ-aUc" id="4rk-OH-uQq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Contacts" id="3qG-zw-62X"/>
+                    <navigationItem key="navigationItem" title="Contacts" id="3qG-zw-62X">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="xpr-gs-hqT">
+                            <connections>
+                                <segue destination="9pv-A4-QxB" kind="show" identifier="AddContact" id="5Cx-0j-pnN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kf6-2a-eRz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -422,4 +431,7 @@
         <image name="sample-834-bolt" width="26" height="28"/>
         <image name="sample-881-globe" width="28" height="28"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="tOD-t4-Vk8"/>
+    </inferredMetricsTieBreakers>
 </document>
