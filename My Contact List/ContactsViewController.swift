@@ -54,8 +54,8 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "segueContactDate") {
-            let dateController = segue.destination as! DateViewController
-            dateController.delegate = self
+            let dateController = segue.destination as! DateViewController // get an instance of the class going to be displayed
+            dateController.delegate = self // Sets the Delegate of that instance to this class(contactsviewcontroller)
         }
     }
     

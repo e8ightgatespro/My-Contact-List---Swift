@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bax-fa-liU">
-                                <rect key="frame" x="143" y="79" width="89" height="29"/>
+                                <rect key="frame" x="143" y="35" width="89" height="29"/>
                                 <segments>
                                     <segment title="View"/>
                                     <segment title="Edit"/>
@@ -29,7 +29,7 @@
                                 </connections>
                             </segmentedControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="bkH-Ax-zAH">
-                                <rect key="frame" x="0.0" y="122" width="375" height="496"/>
+                                <rect key="frame" x="0.0" y="78" width="375" height="589"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="6bD-Fh-mUP">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="291.5"/>
@@ -219,7 +219,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="588" y="-781"/>
+            <point key="canvasLocation" x="1414" y="-781"/>
         </scene>
         <!--Birthdate-->
         <scene sceneID="WfG-ZD-yFU">
@@ -246,7 +246,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnh-cy-SCr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1426" y="-781"/>
+            <point key="canvasLocation" x="2250" y="-781"/>
         </scene>
         <!--Settings-->
         <scene sceneID="wg7-f3-ORb">
@@ -353,6 +353,51 @@
             </objects>
             <point key="canvasLocation" x="-1066" y="0.0"/>
         </scene>
+        <!--Contacts-->
+        <scene sceneID="oxr-lH-V4f">
+            <objects>
+                <tableViewController id="JZY-lQ-aUc" customClass="ContactsTableViewController" customModule="My_Contact_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2Lc-a6-gQi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactsCell" textLabel="DVT-g4-DTJ" detailTextLabel="54J-B9-odg" style="IBUITableViewCellStyleSubtitle" id="aay-Sm-P7q">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aay-Sm-P7q" id="dwd-9j-dZA">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DVT-g4-DTJ">
+                                            <rect key="frame" x="16" y="5" width="33" height="20"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="54J-B9-odg">
+                                            <rect key="frame" x="16" y="25" width="44" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="JZY-lQ-aUc" id="uEi-6W-WT4"/>
+                            <outlet property="delegate" destination="JZY-lQ-aUc" id="4rk-OH-uQq"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Contacts" id="3qG-zw-62X"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kf6-2a-eRz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="588" y="-781"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="efG-qZ-fDU">
             <objects>
@@ -365,7 +410,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="MUx-aN-KHc"/>
+                        <segue destination="JZY-lQ-aUc" kind="relationship" relationship="rootViewController" id="lNN-0Z-28i"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w2E-hO-uWZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
