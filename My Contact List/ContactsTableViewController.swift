@@ -66,6 +66,17 @@ class ContactsTableViewController: UITableViewController {
         cell.accessoryType = UITableViewCellAccessoryType.detailDisclosureButton
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedContact = contacts[indexPath.row] as? Contact
+        let name = selectedContact!.contactName!
+        let actionHandler = { (action:UIAlertAction!) -> Void in
+            self.performSegue(withIdentifier: "EditContact", sender: tableView.cellForRow(at: indexPath))
+        }
+        
+        let alertController = UIAlertController(title: "Contact Selected", message: "Selected row: \(indexPath.row) (\(name)", preferredStyle: .alert)
+        
+    }
  
 
     /*
