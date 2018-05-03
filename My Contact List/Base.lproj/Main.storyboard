@@ -324,12 +324,25 @@
                                     <action selector="findUser:" destination="ISc-OY-3VP" eventType="touchUpInside" id="9nw-2I-1z1"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="piB-qQ-RTt">
+                                <rect key="frame" x="81" y="590" width="212" height="29"/>
+                                <segments>
+                                    <segment title="Standard"/>
+                                    <segment title="Hybrid"/>
+                                    <segment title="Satellite"/>
+                                </segments>
+                                <connections>
+                                    <action selector="mapTypeChanged:" destination="ISc-OY-3VP" eventType="valueChanged" id="U8E-Ts-OAg"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="e4T-sb-tjO" firstAttribute="top" secondItem="1IJ-8V-B8U" secondAttribute="top" constant="20" id="9xE-vt-v1h"/>
                             <constraint firstItem="NQG-YO-oVP" firstAttribute="top" secondItem="TcG-iJ-Idr" secondAttribute="topMargin" id="Hf6-2R-AwX"/>
+                            <constraint firstItem="piB-qQ-RTt" firstAttribute="bottom" secondItem="1IJ-8V-B8U" secondAttribute="bottom" id="IaY-kR-3lN"/>
                             <constraint firstItem="e4T-sb-tjO" firstAttribute="leading" secondItem="1IJ-8V-B8U" secondAttribute="leading" constant="20" id="SWi-aR-6Os"/>
+                            <constraint firstItem="piB-qQ-RTt" firstAttribute="centerX" secondItem="NQG-YO-oVP" secondAttribute="centerX" id="VZE-kY-vP8"/>
                             <constraint firstItem="NQG-YO-oVP" firstAttribute="trailing" secondItem="1IJ-8V-B8U" secondAttribute="trailing" id="dYw-JI-Opl"/>
                             <constraint firstItem="NQG-YO-oVP" firstAttribute="leading" secondItem="1IJ-8V-B8U" secondAttribute="leading" id="dyd-YW-im9"/>
                             <constraint firstItem="NQG-YO-oVP" firstAttribute="bottom" secondItem="1IJ-8V-B8U" secondAttribute="bottom" id="sqd-Km-OaN"/>
@@ -339,6 +352,7 @@
                     <tabBarItem key="tabBarItem" title="Map" image="sample-881-globe" selectedImage="sample-881-globe" id="eEo-qH-tnU"/>
                     <connections>
                         <outlet property="mapView" destination="NQG-YO-oVP" id="Ir1-3s-tTb"/>
+                        <outlet property="sgmtMapType" destination="piB-qQ-RTt" id="4cC-CV-qbH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3En-BU-kFN" userLabel="First Responder" sceneMemberID="firstResponder"/>

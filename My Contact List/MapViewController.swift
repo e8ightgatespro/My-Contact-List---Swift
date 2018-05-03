@@ -13,6 +13,7 @@ import CoreData
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var sgmtMapType: UISegmentedControl!
     
     var contacts: [Contact] = []
     
@@ -92,6 +93,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mp.subtitle = "Are Here"
         mapView.addAnnotation(mp)
     }
+    
+    @IBAction func mapTypeChanged(_ sender: Any) {
+        switch sgmtMapType.selectedSegmentIndex {
+        case 0:
+            mapView.mapType = .standard
+        case 1:
+            mapView.mapType = .hybrid
+        case 2:
+            mapView.mapType = .satellite
+        default: break 
+        }
+    }
+    
     
     /*
     // MARK: - Navigation
