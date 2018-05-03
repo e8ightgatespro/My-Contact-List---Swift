@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Zvt-dY-xYg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -313,26 +314,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Map" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0k6-tv-F3b">
-                                <rect key="frame" x="153.5" y="312" width="68.5" height="43"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="NQG-YO-oVP">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4T-sb-tjO">
+                                <rect key="frame" x="20" y="40" width="59" height="30"/>
+                                <state key="normal" title="Find Me!"/>
+                                <connections>
+                                    <action selector="findUser:" destination="ISc-OY-3VP" eventType="touchUpInside" id="9nw-2I-1z1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="0k6-tv-F3b" firstAttribute="centerY" secondItem="TcG-iJ-Idr" secondAttribute="centerY" id="6J9-Vf-851"/>
-                            <constraint firstItem="0k6-tv-F3b" firstAttribute="centerX" secondItem="TcG-iJ-Idr" secondAttribute="centerX" id="VCg-uR-JDG"/>
+                            <constraint firstItem="e4T-sb-tjO" firstAttribute="top" secondItem="1IJ-8V-B8U" secondAttribute="top" constant="20" id="9xE-vt-v1h"/>
+                            <constraint firstItem="NQG-YO-oVP" firstAttribute="top" secondItem="TcG-iJ-Idr" secondAttribute="topMargin" id="Hf6-2R-AwX"/>
+                            <constraint firstItem="e4T-sb-tjO" firstAttribute="leading" secondItem="1IJ-8V-B8U" secondAttribute="leading" constant="20" id="SWi-aR-6Os"/>
+                            <constraint firstItem="NQG-YO-oVP" firstAttribute="trailing" secondItem="1IJ-8V-B8U" secondAttribute="trailing" id="dYw-JI-Opl"/>
+                            <constraint firstItem="NQG-YO-oVP" firstAttribute="leading" secondItem="1IJ-8V-B8U" secondAttribute="leading" id="dyd-YW-im9"/>
+                            <constraint firstItem="NQG-YO-oVP" firstAttribute="bottom" secondItem="1IJ-8V-B8U" secondAttribute="bottom" id="sqd-Km-OaN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1IJ-8V-B8U"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="sample-881-globe" selectedImage="sample-881-globe" id="eEo-qH-tnU"/>
+                    <connections>
+                        <outlet property="mapView" destination="NQG-YO-oVP" id="Ir1-3s-tTb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3En-BU-kFN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="588" y="0.0"/>
+            <point key="canvasLocation" x="588" y="-0.44977511244377816"/>
         </scene>
         <!--Location Demo View Controller-->
         <scene sceneID="0QZ-3j-jXu">
