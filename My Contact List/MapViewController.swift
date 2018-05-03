@@ -8,9 +8,14 @@
 
 import UIKit
 import MapKit
+import CoreData
+
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
+    
+    var contacts: [Contact] = []
+    
     var locationManager: CLLocationManager!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +27,50 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSManagedObject>(entityName: "Contact")
+        var fetchedObjects: [NSManagedObject] = []
+        do {
+            fetchedObjects = try context.fetch(request)
+            
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        contacts = fetchedObjects as! [Contact]
+        self.mapView.removeAnnotations(self.mapView.annotations)
+        
+        for contact in contacts {
+            let address = "\(contact.streetAddress!), \(contact.city!), \(contact.state!)"
+            let geoCoder = CLGeocoder()
+            geoCoder.geocodeAddressString(address) { (placemarks, error) in
+                self.processAddressResponse(contact, withPlacemarks: placemarks, error: error)
+            }
+        }
+    }
+    
+    func processAddressResponse(_ contact: Contact, withPlacemarks placemarks: [CLPlacemark]?, error: Error?) {
+        if let error = error {
+            print("Geocode Error: \(error)")
+        }
+        else {
+            var bestMatch: CLLocation?
+            if let placemarks = placemarks, placemarks.count > 0 {
+                bestMatch = placemarks.first?.location
+            }
+            if let coordinate = bestMatch?.coordinate {
+                let mp = MapPoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
+                mp.title = contact.contactName
+                mp.subtitle = contact.streetAddress
+                mapView.addAnnotation(mp)
+            }
+            else {
+                print("Didn't find any matching locations")
+            }
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -29,8 +78,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     @IBAction func findUser(_ sender: Any) {
-        mapView.showsUserLocation = true
-        mapView.setUserTrackingMode(.follow, animated: true)
+        mapView.showAnnotations(mapView.annotations, animated: true)
     }
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
